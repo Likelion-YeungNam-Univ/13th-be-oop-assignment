@@ -66,6 +66,7 @@ public class Yu_Lion_Repository {
                 {
                     System.out.println("성실도 설정범위미만!!!");
                     yu_lion.setSincerity(0);
+                    return;
                 }
                 System.out.println("변경된 성실도: " + yu_lion.getSincerity());
             }
