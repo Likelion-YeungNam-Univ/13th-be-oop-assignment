@@ -69,7 +69,7 @@ public class BabyLionRepository {
         }
     }
 
-    public void subSincerity(String studentNum) { // 성실도 증가
+    public void subSincerity(String studentNum) { // 성실도 감소
         if (!BabyLions.containsKey(studentNum)) { // 예외처리
             System.out.println("입력한 학번에 맞는 아기사자가 존재하지 않습니다.");
         }
