@@ -8,7 +8,6 @@ class BabyLion {
         this.studentNumber = studentNumber;
         this.studentName = studentName;
         this.studentIntro = studentIntro;
-        this.sincerity = sincerity;
     }
 
     public String getStudentNumber() {
