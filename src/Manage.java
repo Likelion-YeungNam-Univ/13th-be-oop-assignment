@@ -58,19 +58,19 @@ public class Manage {
     }
 
     public void allInquiry(){
-        for (int i = 0; i < babyLions.size(); i++){
-            Inquiry(babyLions.get(i));
-        }
-//        for (Repository babyLion : babyLions)
-//            Inquiry(babyLion);
+        for (Repository babyLion : babyLions)
+            Inquiry(babyLion);
+//        for (int i = 0; i < babyLions.size(); i++){
+//            Inquiry(babyLions.get(i));
+//        }
     }
 
     public void individualInquiry(){
         System.out.print("조회하고 싶은 아기사자 학번 입력 : ");
         int num = scanner.nextInt();
-        for (int i = 0; i < babyLions.size(); i++){
-            if (babyLions.get(i).getStudentId() == num){
-                Inquiry(babyLions.get(i));
+        for (Repository babyLion : babyLions) {
+            if (babyLion.getStudentId() == num) {
+                Inquiry(babyLion);
                 return;
             }
         }
@@ -85,10 +85,10 @@ public class Manage {
         System.out.print("자기소개 수정하고 싶은 아기사자 학번 입력 : ");
         int num = scanner.nextInt();
         scanner.nextLine();
-        for (int i = 0; i < babyLions.size(); i++){
-            if (babyLions.get(i).getStudentId() == num){
+        for (Repository babyLion : babyLions) {
+            if (babyLion.getStudentId() == num) {
                 System.out.print("자기소개 수정 내용 입력 : ");
-                babyLions.get(i).setIntroduction(scanner.nextLine());
+                babyLion.setIntroduction(scanner.nextLine());
                 return;
             }
         }
@@ -98,15 +98,15 @@ public class Manage {
     public void modifyFaithful() {
         System.out.print("성실도 수정하고 싶은 아기사자 학번 입력 : ");
         int num = scanner.nextInt();
-        for (int i = 0; i < babyLions.size(); i++){
-            if (babyLions.get(i).getStudentId() == num){
-                if (babyLions.get(i).getFaithful() > 5 || babyLions.get(i).getFaithful() < 0){
+        for (Repository babyLion : babyLions) {
+            if (babyLion.getStudentId() == num) {
+                if (babyLion.getFaithful() > 5 || babyLion.getFaithful() < 0) {
                     System.out.println("성실도는 0~5 범위 내에서만 가능");
                     return;
                 }
                 System.out.print("+ 또는 - 입력 : ");
                 String score = scanner.next();
-                babyLions.get(i).setFaithful(score);
+                babyLion.setFaithful(score);
                 return;
             }
         }
