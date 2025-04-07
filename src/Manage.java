@@ -68,12 +68,7 @@ public class Manage {
     public void individualInquiry(){
         System.out.print("조회하고 싶은 아기사자 학번 입력 : ");
         int num = scanner.nextInt();
-        for (Repository babyLion : babyLions) {
-            if (babyLion.getStudentId() == num) {
-                Inquiry(babyLion);
-                return;
-            }
-        }
+
         System.out.println("학번" + num + " 아기사자가 없습니다");
     }
 
@@ -84,13 +79,14 @@ public class Manage {
     public void modifyIntroduction(){
         System.out.print("자기소개 수정하고 싶은 아기사자 학번 입력 : ");
         int num = scanner.nextInt();
+
         scanner.nextLine();
-        for (Repository babyLion : babyLions) {
-            if (babyLion.getStudentId() == num) {
-                System.out.print("자기소개 수정 내용 입력 : ");
-                babyLion.setIntroduction(scanner.nextLine());
-                return;
-            }
+
+        Repository babyLion = search(num);
+        if (babyLion != null) {
+            System.out.print("자기소개 수정 내용 입력 : ");
+            babyLion.setIntroduction(scanner.nextLine());
+            return;
         }
         System.out.println("학번" + num + " 아기사자가 없습니다");
     }
@@ -98,17 +94,16 @@ public class Manage {
     public void modifyFaithful() {
         System.out.print("성실도 수정하고 싶은 아기사자 학번 입력 : ");
         int num = scanner.nextInt();
-        for (Repository babyLion : babyLions) {
-            if (babyLion.getStudentId() == num) {
-                if (babyLion.getFaithful() > 5 || babyLion.getFaithful() < 0) {
-                    System.out.println("성실도는 0~5 범위 내에서만 가능");
-                    return;
-                }
-                System.out.print("+ 또는 - 입력 : ");
-                String score = scanner.next();
-                babyLion.setFaithful(score);
+        Repository babyLion = search(num);
+        if (babyLion != null) {
+            if (babyLion.getFaithful() > 5 || babyLion.getFaithful() < 0) {
+                System.out.println("성실도는 0~5 범위 내에서만 가능");
                 return;
             }
+            System.out.print("+ 또는 - 입력 : ");
+            String score = scanner.next();
+            babyLion.setFaithful(score);
+            return;
         }
         System.out.println("학번" + num + " 아기사자가 없습니다");
     }
@@ -116,12 +111,20 @@ public class Manage {
     public void delete(){
         System.out.print("삭제하고 싶은 아기사자 학번 입력 : ");
         int num = scanner.nextInt();
-        for (int i = 0; i < babyLions.size(); i++){
-            if (babyLions.get(i).getStudentId() == num){
-                babyLions.remove(i);
-                return;
-            }
+        Repository babyLion = search(num);
+        if (babyLion != null) {
+            babyLions.remove(babyLion);
+            return;
         }
         System.out.println("학번" + num + " 아기사자가 없습니다");
+    }
+
+    public Repository search(int num){
+        for (Repository babyLion : babyLions) {
+            if (babyLion.getStudentId() == num) {
+                return babyLion;
+            }
+        }
+        return null;
     }
 }
