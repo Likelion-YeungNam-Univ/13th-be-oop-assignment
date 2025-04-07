@@ -8,12 +8,12 @@ public class BabyLionList {
     }
     //아기사자 추가
     public void addBLion(BabyLion lion){
-        lions[count++] = lion;
-        System.out.println("아기사자가 등록되었습니다.");
         if(lions.length<count) {
             System.out.println("용량초과");
-
         }
+        lions[count++] = lion;
+        System.out.println("아기사자가 등록되었습니다.");
+
     }
     //아기사자 전체조회
     public void allBabyLion(){
