@@ -27,12 +27,6 @@ public class babyLion {
         return this.sincerity;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-    public void setStudentID(String studentID) {
-        this.studentID = studentID;
-    }
     public void setSelfIntro(String selfIntro) {
         this.selfIntro = selfIntro;
     }
